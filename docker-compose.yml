@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  finance-nextjs:
+    image: finance-nextjs-app:${APP_VERSION:-latest}
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - API_URL=http://dev.opensource-technology.com:8080/api/v1
+    ports:
+      - '80:80'
